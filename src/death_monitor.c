@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   death_monitor.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgorceac <dgorceac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/16 16:12:50 by dgorceac          #+#    #+#             */
-/*   Updated: 2026/02/24 15:21:51 by dgorceac         ###   ########.fr       */
+/*   Created: 2026/02/24 14:13:20 by dgorceac          #+#    #+#             */
+/*   Updated: 2026/02/24 15:25:18 by dgorceac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main(int argc, char **argv)
+int	death_monitor(t_data *data)
 {
-	t_data data;
-	if (argc < 5 || argc > 7)
+	int i;
+	t_philo *philos;
+
+	while (data->alive == 1)
 	{
-		printf("Error : args error\n");
-		return 1;
-    }
-	if (parse_args(&data, argc, argv))
-		return 1;
-	if (init_data(&data))
-		return 1;
-	
-	create_threads(&data);
-    //death_monitor
-    join_threads(&data);
-    cleanup(&data);
-	
-	return 0;
+		i = 0;
+		while (&data->philos[i] < &data->number_of_philo - 1)
+		{
+			if (&data->alive != 1)
+			{
+				//opeste simularea
+				print_state(&philos[i], "died\n");
+				return (0);
+			}
+			if (&data->nb_meal == &philos->nb_meals)
+			{
+				//opeste simularea
+				return (0);
+			}
+			i++;
+		}
+	}
+	usleep(100);
 }
