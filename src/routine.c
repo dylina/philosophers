@@ -6,7 +6,7 @@
 /*   By: dgorceac <dgorceac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 16:12:56 by dgorceac          #+#    #+#             */
-/*   Updated: 2026/02/20 14:56:15 by dgorceac         ###   ########.fr       */
+/*   Updated: 2026/02/24 15:17:53 by dgorceac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	take_a_fork(t_philo *philo)
 	}
 	else
 	{
-		pthread_mutex_lock(philo->next_fork);
-		print_state(philo, "has taken a fork");
 		pthread_mutex_lock(&philo->fork);
+		print_state(philo, "has taken a fork");
+		pthread_mutex_lock(philo->next_fork);
 		print_state(philo, "has taken a fork");
 	}
 }
