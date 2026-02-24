@@ -64,4 +64,6 @@ void		*routine(void *arg);
 int			create_threads(t_data *data);
 int			join_threads(t_data *data);
 
+void		cleanup(t_data *data);
+
 #endif
