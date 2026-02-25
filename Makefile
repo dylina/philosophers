@@ -10,7 +10,9 @@ SRC =	./src/main.c\
 		./src/utils_philo.c\
 		./src/init.c\
 		./src/threads.c\
-		./src/cleanup.c
+		./src/cleanup.c\
+		./src/death_monitor.c
+		
 
 OBJ = $(SRC:.c=.o)
 
