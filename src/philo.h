@@ -66,4 +66,8 @@ int			join_threads(t_data *data);
 
 void		cleanup(t_data *data);
 
+void		set_alive(t_data *data, int n);
+int			check_if_one_died(t_data *data, int i);
+int			death_monitor(t_data *data);
+
 #endif
