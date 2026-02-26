@@ -6,7 +6,7 @@
 /*   By: dgorceac <dgorceac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 16:12:56 by dgorceac          #+#    #+#             */
-/*   Updated: 2026/02/24 15:17:53 by dgorceac         ###   ########.fr       */
+/*   Updated: 2026/02/26 16:13:04 by dgorceac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,23 @@ void	*routine(void *arg)
 	philo = (t_philo *)arg;//cast pentru argumente
 	if (philo->id % 2 == 0)
 		usleep(1000);
+	if (philo->data->number_of_philo == 1)
+	{
+		print_state(philo, "has taken a fork");
+		precise_sleep(philo->data->time_to_die, philo->data);
+		return (NULL);
+	}
 	while (get_alive(philo->data))
 	{
 		take_a_fork(philo);
-
 		print_state(philo, "is eating");
 		update_last_meal(philo);
 		precise_sleep(philo->data->time_to_eat, philo->data);
 
 		release_forks(philo);
-
+		
 		print_state(philo, "is sleeping");
 		precise_sleep(philo->data->time_to_sleep, philo->data);
-
 		print_state(philo, "is thinking");
 	}
 	return (NULL);

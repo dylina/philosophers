@@ -12,15 +12,15 @@ typedef struct s_data t_data;
 
 typedef struct	s_philo
 {
-	pthread_t	philo_thread;
-	int			id;
-	int			nb_meals;
-	long		last_meal;//ca sa stiu timplul la care el a mancat ultima dataa si sa fac calculele ca sa vad daca moare sau nu pt ca daca get_time() - last meal > time to die !!!moare
+	pthread_t		philo_thread;
+	int				id;
+	int				nb_meals;
+	long			last_meal;//ca sa stiu timplul la care el a mancat ultima dataa si sa fac calculele ca sa vad daca moare sau nu pt ca daca get_time() - last meal > time to die !!!moare
 
 	pthread_mutex_t fork;
 	pthread_mutex_t *next_fork;
 	pthread_mutex_t	meal_lock;
-	t_data		*data;
+	t_data			*data;
 	
 }	t_philo;
 
