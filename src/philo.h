@@ -14,7 +14,7 @@ typedef struct	s_philo
 {
 	pthread_t	philo_thread;
 	int			id;
-	int			nb_meals;// sa stiu daca moare in caz ca  [number_of_times_each_philosopher_must_eat]
+	int			nb_meals;
 	long		last_meal;//ca sa stiu timplul la care el a mancat ultima dataa si sa fac calculele ca sa vad daca moare sau nu pt ca daca get_time() - last meal > time to die !!!moare
 
 	pthread_mutex_t fork;
@@ -34,7 +34,7 @@ typedef struct	s_data
 	long	time_to_sleep;
 
 	long	start_time;
-	int		nb_meal;
+	int		nb_meal;// sa stiu daca moare in caz ca  [number_of_times_each_philosopher_must_eat]
 	int		all_ate;
 
 	pthread_mutex_t	alive_lock;
@@ -68,6 +68,7 @@ void		cleanup(t_data *data);
 
 void		set_alive(t_data *data, int n);
 int			check_if_one_died(t_data *data, int i);
+int			all_ate_enough(t_data *data);
 int			death_monitor(t_data *data);
 
 #endif
