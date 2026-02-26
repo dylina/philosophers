@@ -15,7 +15,7 @@
 int main(int argc, char **argv)
 {
 	t_data data;//? trebuie initializata alt fel
-	if (argc < 5 || argc > 7)
+	if (argc < 5 || argc > 6)
 	{
 		printf("Error : args error\n");
 		return 1;
