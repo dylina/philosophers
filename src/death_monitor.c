@@ -6,7 +6,7 @@
 /*   By: dgorceac <dgorceac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 14:13:20 by dgorceac          #+#    #+#             */
-/*   Updated: 2026/02/25 16:37:48 by dgorceac         ###   ########.fr       */
+/*   Updated: 2026/02/26 15:56:20 by dgorceac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,48 @@
 
 int	death_monitor(t_data *data)
 {
-	int i;
+	int	i;
 	
-	while (data->alive == 1)
+	while (get_alive(data) == 1)
 	{
 		i = 0;
 		while (i < data->number_of_philo)
 		{
-			// TODO: verific dacă philosophul i a murit
-            // folos. check_if_one_died
+			if (check_if_one_died(data, i))
+				return (1);
 			i++;
 		}
-		// TODO: verific dacă toți au mâncat destul. opțional?
+		if (all_ate_enough(data))
+		{
+			set_alive(data, 0);
+			return (0);
+		}
+
 		usleep(1000);
 	}
 	return (0);
+}
+
+int	all_ate_enough(t_data *data)
+{
+	int	i;
+	int meals;
+
+	i = 0;
+	if (data->nb_meal == -1)
+		return (0);
+
+	while (i < data->number_of_philo)
+	{
+		pthread_mutex_lock(&data->philos[i].meal_lock);
+		meals = data->philos[i].nb_meals;
+		pthread_mutex_unlock(&data->philos[i].meal_lock);
+
+		if (meals < data->nb_meal)
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 void	set_alive(t_data *data, int n)
@@ -47,9 +74,11 @@ int	check_if_one_died(t_data *data, int i)
 
 	philos = &data->philos[i];
 	current_time = get_time();
+
 	pthread_mutex_lock(&philos->meal_lock);
 	last_meal_time = philos->last_meal;
 	pthread_mutex_unlock(&philos->meal_lock);
+
 	elapsed = current_time - last_meal_time;
 	if (elapsed > data->time_to_die)
 	{
