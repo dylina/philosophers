@@ -6,7 +6,7 @@
 /*   By: dgorceac <dgorceac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 14:13:20 by dgorceac          #+#    #+#             */
-/*   Updated: 2026/02/26 16:07:45 by dgorceac         ###   ########.fr       */
+/*   Updated: 2026/02/26 17:08:28 by dgorceac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	death_monitor(t_data *data)
 {
 	int	i;
-	
+
 	while (get_alive(data) == 1)
 	{
 		i = 0;
@@ -30,7 +30,6 @@ int	death_monitor(t_data *data)
 			set_alive(data, 0);
 			return (0);
 		}
-
 		usleep(1000);
 	}
 	return (0);
@@ -39,18 +38,16 @@ int	death_monitor(t_data *data)
 int	all_ate_enough(t_data *data)
 {
 	int	i;
-	int meals;
+	int	meals;
 
 	i = 0;
 	if (data->nb_meal == -1)
 		return (0);
-
 	while (i < data->number_of_philo)
 	{
 		pthread_mutex_lock(&data->philos[i].meal_lock);
 		meals = data->philos[i].nb_meals;
 		pthread_mutex_unlock(&data->philos[i].meal_lock);
-
 		if (meals < data->nb_meal)
 			return (0);
 		i++;
@@ -74,11 +71,9 @@ int	check_if_one_died(t_data *data, int i)
 
 	philos = &data->philos[i];
 	current_time = get_time();
-
 	pthread_mutex_lock(&philos->meal_lock);
 	last_meal_time = philos->last_meal;
 	pthread_mutex_unlock(&philos->meal_lock);
-
 	elapsed = current_time - last_meal_time;
 	if (elapsed > data->time_to_die)
 	{

@@ -6,7 +6,7 @@
 /*   By: dgorceac <dgorceac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 14:37:15 by dgorceac          #+#    #+#             */
-/*   Updated: 2026/02/19 16:46:56 by dgorceac         ###   ########.fr       */
+/*   Updated: 2026/02/26 17:03:23 by dgorceac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	parse_args(t_data *data, int argc, char **argv)
 	if (argc == 6)
 		data->nb_meal = ft_atoi(argv[5]);
 	if (data->time_to_die <= 0 || data->time_to_eat <= 0
-			|| data->time_to_sleep <= 0 || data->number_of_philo <= 0 || 
-		(argc == 6 && data->nb_meal <= 0))
+		|| data->time_to_sleep <= 0 || data->number_of_philo <= 0
+		|| (argc == 6 && data->nb_meal <= 0))
 	{
 		printf("Error : change your args!\n");
 		return (1);

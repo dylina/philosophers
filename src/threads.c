@@ -6,7 +6,7 @@
 /*   By: dgorceac <dgorceac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 14:14:15 by dgorceac          #+#    #+#             */
-/*   Updated: 2026/02/20 15:39:52 by dgorceac         ###   ########.fr       */
+/*   Updated: 2026/02/26 17:06:13 by dgorceac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	create_threads(t_data *data)
 {
-	int i;
-	t_philo *philos;
+	int		i;
+	t_philo	*philos;
 
 	i = 0;
 	while (i < data->number_of_philo)
@@ -33,7 +33,7 @@ int	create_threads(t_data *data)
 
 int	join_threads(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->number_of_philo)
