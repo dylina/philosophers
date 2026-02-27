@@ -1,8 +1,8 @@
 *This project has been created as part of the 42 curriculum by dgorceac*
 
-#Philosophers
+# Philosophers
 
-##Description
+## Description
 
 The **Philosophers** project is part of the curriculum at 42 School. Its objective is to introduce the fundamentals of concurrent programming, thread management, and synchronization in C.
 
@@ -17,34 +17,43 @@ The main challenges of this project are:
 - Detecting philosopher death accurately
 - Ensuring precise time management in milliseconds
 
-The program is implemented using POSIX threads (`pthread`) and mutexes.
+The program is implemented using POSIX **threads** (`pthread`) and **mutexes**.
 
+### The state of a philosopher is formatted as follows:
++ timestamp_in_ms X has taken a fork
++ timestamp_in_ms X is eating
++ timestamp_in_ms X is sleeping
++ timestamp_in_ms X is thinking
++ timestamp_in_ms X died
 
-##Instructions
+*timestamp_in_ms* is the current timestamp in milliseconds
+and *X*- philosophers number
+
+## Instructions
 
 ### Compilation
 
-Clone the repository and compile the project using:
++ Clone this project :<br>
+$ git clone [the path]
 
-`bash
-make
++ Compile the program :<br>
+$ make
 
-This will generate the executable:
-./philo
++ Run the project :<br>
+$ ./philo  number_of_philosophers  time_to_die  time_to_eat  time_to_sleep [number_of_times_each_philosopher_must_eat]</p>
 
-Available Makefile rules:
-make        # compile the project
-make clean  # remove object files
-make fclean # remove object files and executable
-make re     # recompile everything
+#### Available Makefile rules:
 
-./philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
+- compile the project - $ make
+- remove object files - $ make clean
+- remove object files and executable - $ make fclean
+- recompile everything - $ make re
+   
+## Resources
 
-##Resources
+#### Documentation
 
-Documentation
-
--POSIX Threads Programming Guide
--man pthread_create
--man pthread_mutex_init
--The Dining Philosophers Problem (classical concurrency problem description)
+- POSIX Threads Programming Guide
+- man pthread_create
+- man pthread_mutex_init
+- The Dining Philosophers Problem (classical concurrency problem description)
