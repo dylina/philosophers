@@ -33,13 +33,13 @@ and *X*- philosophers number
 
 ### Compilation
 
-+ Clone this project :<br>
++ **Clone this project :**<br>
 $ git clone [the path]
 
-+ Compile the program :<br>
++ **Compile the program :**<br>
 $ make
 
-+ Run the project :<br>
++ **Run the project :**<br>
 $ ./philo  number_of_philosophers  time_to_die  time_to_eat  time_to_sleep [number_of_times_each_philosopher_must_eat]</p>
 
 #### Available Makefile rules:
@@ -56,4 +56,6 @@ $ ./philo  number_of_philosophers  time_to_die  time_to_eat  time_to_sleep [numb
 - POSIX Threads Programming Guide
 - man pthread_create
 - man pthread_mutex_init
-- The Dining Philosophers Problem (classical concurrency problem description)
+- [The Dining Philosophers Problem](https://diningphilosophers.eu/)
+- [Threads, Mutexes and Concurrent Programming in C](https://www.codequoi.com/en/threads-mutexes-and-concurrent-programming-in-c/)
+
